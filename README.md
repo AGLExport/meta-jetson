@@ -1,7 +1,7 @@
 meta-jetson
 ===============
 
-Upstream Linux base Yocto layer for the NVidia Tegra Jetson TK1 board.  
+Upstream Linux base Yocto layer for the NVidia Tegra Jetson TK1/TX1 board.  
 This BSP is not NVIDIA official.  It is a community BSP built with OSS.  
 This environment is experimental.  
 
@@ -11,7 +11,7 @@ Available functions.
 
 Supported distros.  
   poky (core-image-weston).  
-  AGL Distro 3.0.  
+  AGL Distro 4.0.  
 
 ===============
 
