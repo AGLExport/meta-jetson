@@ -7,12 +7,12 @@ DEPENDS = "libdrm virtual/egl"
 inherit autotools pkgconfig
 
 
-SRC_URI = "git://github.com/Gnurou/kmscube.git;protocol=git;branch=gk20a \
+SRC_URI = "git://github.com/Gnurou/kmscube.git;protocol=git;branch=master \
            "
 
 S = "${WORKDIR}/git"
 
-SRCREV = "5bccc25921d669f444d470d93a0f6dfdbd5a5a2d"
+SRCREV = "cf1b4e2ba941cad2ebd740a111fd61a9c083198c"
 
 INSANE_SKIP_kmscube += "dev-deps"
 

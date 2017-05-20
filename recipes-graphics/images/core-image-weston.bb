@@ -12,7 +12,9 @@ CORE_IMAGE_BASE_INSTALL += "weston weston-init weston-examples gtk+3-demo clutte
 
 IMAGE_INSTALL += " kernel-modules udev-extraconf libdrm-tegra libdrm-kms mesa-megadriver kmscube "
 
-IMAGE_INSTALL += " glmark2 mpv jack2 jack2conf alsa-utils"
+IMAGE_INSTALL += " glmark2 alsa-utils"
 
-IMAGE_INSTALL += " qtwayland qtbase-fonts qtbase-plugins cinematicexperience "
+#IMAGE_INSTALL += " glmark2 mpv jack2 jack2conf alsa-utils"
+
+#IMAGE_INSTALL += " qtwayland qtbase-fonts qtbase-plugins cinematicexperience "
 
