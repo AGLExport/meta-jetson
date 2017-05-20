@@ -1,0 +1,46 @@
+From bf97b6d60218a7c29f8aa10b1b8c3adf60d71a29 Mon Sep 17 00:00:00 2001
+From: Alexandre Courbot <acourbot@nvidia.com>
+Date: Mon, 11 Jul 2016 16:15:10 +0900
+Subject: [PATCH 10/13] disable first DC
+
+---
+ arch/arm64/boot/dts/nvidia/tegra210-p2371-2180.dts | 2 +-
+ arch/arm64/boot/dts/nvidia/tegra210.dtsi           | 2 ++
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/nvidia/tegra210-p2371-2180.dts b/arch/arm64/boot/dts/nvidia/tegra210-p2371-2180.dts
+index 58f91a2..a53292b 100644
+--- a/arch/arm64/boot/dts/nvidia/tegra210-p2371-2180.dts
++++ b/arch/arm64/boot/dts/nvidia/tegra210-p2371-2180.dts
+@@ -35,7 +35,7 @@
+ 
+ 	host1x@50000000 {
+ 		dsi@54300000 {
+-			status = "okay";
++			status = "disabled";
+ 
+ 			avdd-dsi-csi-supply = <&vdd_dsi_csi>;
+ 
+diff --git a/arch/arm64/boot/dts/nvidia/tegra210.dtsi b/arch/arm64/boot/dts/nvidia/tegra210.dtsi
+index 2f832df..0c313f7 100644
+--- a/arch/arm64/boot/dts/nvidia/tegra210.dtsi
++++ b/arch/arm64/boot/dts/nvidia/tegra210.dtsi
+@@ -134,6 +134,7 @@
+ 			reg = <0x0 0x54100000 0x0 0x00040000>;
+ 		};
+ 
++/*
+ 		dc@54200000 {
+ 			compatible = "nvidia,tegra210-dc";
+ 			reg = <0x0 0x54200000 0x0 0x00040000>;
+@@ -148,6 +149,7 @@
+ 
+ 			nvidia,head = <0>;
+ 		};
++		*/
+ 
+ 		dc@54240000 {
+ 			compatible = "nvidia,tegra210-dc";
+-- 
+1.9.1
+

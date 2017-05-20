@@ -1,0 +1,21 @@
+From 8fb55914bb84d63d0366558162d40760c2a1dd29 Mon Sep 17 00:00:00 2001
+From: Alexandre Courbot <acourbot@nvidia.com>
+Date: Fri, 9 Sep 2016 14:12:48 +0900
+Subject: [PATCH 06/13] arm: tegra: add SECCOMP support for systemd 231
+
+---
+ arch/arm/configs/tegra_defconfig | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/arm/configs/tegra_defconfig b/arch/arm/configs/tegra_defconfig
+index 797fe86..44f07d7 100644
+--- a/arch/arm/configs/tegra_defconfig
++++ b/arch/arm/configs/tegra_defconfig
+@@ -304,3 +304,4 @@ CONFIG_DEBUG_LL=y
+ CONFIG_EARLY_PRINTK=y
+ CONFIG_CRYPTO_TWOFISH=y
+ CONFIG_CRC_CCITT=y
++CONFIG_SECCOMP=y
+-- 
+1.9.1
+

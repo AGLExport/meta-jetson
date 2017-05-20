@@ -1,0 +1,51 @@
+From 8537237c9520618dae14c80ad10fa352d29d4892 Mon Sep 17 00:00:00 2001
+From: Alexandre Courbot <acourbot@nvidia.com>
+Date: Wed, 22 Jun 2016 16:46:48 +0900
+Subject: [PATCH 07/13] arm64: tegra: Add VDD_GPU regulator to Jetson TX1
+
+Add the VDD_GPU regulator (a GPIO-enabled PWM regulator) to the Jetson
+TX1 board. This addition allows the GPU to be used provided the
+bootloader properly enabled the GPU node.
+
+Signed-off-by: Alexandre Courbot <acourbot@nvidia.com>
+---
+ arch/arm64/boot/dts/nvidia/tegra210-p2371-2180.dts | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/nvidia/tegra210-p2371-2180.dts b/arch/arm64/boot/dts/nvidia/tegra210-p2371-2180.dts
+index 4c1ea7a..306d8b0 100644
+--- a/arch/arm64/boot/dts/nvidia/tegra210-p2371-2180.dts
++++ b/arch/arm64/boot/dts/nvidia/tegra210-p2371-2180.dts
+@@ -51,6 +51,10 @@
+ 		};
+ 	};
+ 
++	gpu@57000000 {
++		vdd-supply = <&vdd_gpu>;
++	};
++
+ 	i2c@7000c400 {
+ 		backlight: backlight@2c {
+ 			compatible = "ti,lp8557";
+@@ -77,4 +81,18 @@
+ 			};
+ 		};
+ 	};
++
++	regulators {
++		vdd_gpu: regulator@100 {
++			compatible = "pwm-regulator";
++			reg = <100>;
++			pwms = <&pwm 1 4880>;
++			regulator-name = "VDD_GPU";
++			regulator-min-microvolt = <710000>;
++			regulator-max-microvolt = <1320000>;
++			enable-gpios = <&pmic 6 GPIO_ACTIVE_HIGH>;
++			regulator-ramp-delay = <80>;
++			regulator-enable-ramp-delay = <1000>;
++		};
++	};
+ };
+-- 
+1.9.1
+

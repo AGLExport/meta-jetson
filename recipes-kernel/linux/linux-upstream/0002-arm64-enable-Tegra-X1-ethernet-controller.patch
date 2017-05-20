@@ -1,0 +1,25 @@
+From d32e5320b1d54269b921ebe421cf0add6dfcec3d Mon Sep 17 00:00:00 2001
+From: wata2ki <wata2ki@gmail.com>
+Date: Wed, 1 Mar 2017 00:09:18 +0900
+Subject: [PATCH 2/4] arm64: enable Tegra X1 ethernet controller
+
+From 3bb4af033eadce7f4d572a88e811eadf54bee1fd Mon Sep 17 00:00:00 2001
+From: Alexandre Courbot <acourbot@nvidia.com>
+Date: Thu, 9 Jun 2016 16:02:00 +0900
+Subject: [PATCH 03/13] arm64: enable Tegra X1 ethernet controller
+---
+ arch/arm64/configs/defconfig | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
+index 01d9e30..dc12f3a 100755
+--- a/arch/arm64/configs/defconfig
++++ b/arch/arm64/configs/defconfig
+@@ -470,3 +470,4 @@ CONFIG_BACKLIGHT_LCD_SUPPORT=y
+ CONFIG_BACKLIGHT_CLASS_DEVICE=y
+ CONFIG_BACKLIGHT_LP855X=y
+ CONFIG_DRM_PANEL_SIMPLE=y
++CONFIG_USB_RTL8152=y
+-- 
+1.9.1
+

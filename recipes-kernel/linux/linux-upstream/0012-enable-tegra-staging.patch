@@ -1,0 +1,37 @@
+From 631dbc7c33530281cbb0a2b3af1d4e154a403196 Mon Sep 17 00:00:00 2001
+From: Alexandre Courbot <acourbot@nvidia.com>
+Date: Thu, 8 Dec 2016 14:42:08 +0900
+Subject: [PATCH 12/13] enable tegra staging
+
+---
+ arch/arm/configs/tegra_defconfig | 1 +
+ arch/arm64/configs/defconfig     | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/arch/arm/configs/tegra_defconfig b/arch/arm/configs/tegra_defconfig
+index 44f07d7..c1a572e 100644
+--- a/arch/arm/configs/tegra_defconfig
++++ b/arch/arm/configs/tegra_defconfig
+@@ -184,6 +184,7 @@ CONFIG_USB_GSPCA=y
+ CONFIG_DRM=y
+ CONFIG_DRM_NOUVEAU=m
+ CONFIG_DRM_TEGRA=y
++CONFIG_DRM_TEGRA_STAGING=y
+ CONFIG_DRM_PANEL_SIMPLE=y
+ # CONFIG_LCD_CLASS_DEVICE is not set
+ # CONFIG_BACKLIGHT_GENERIC is not set
+diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
+index 4c2c9cf..42cecb9 100644
+--- a/arch/arm64/configs/defconfig
++++ b/arch/arm64/configs/defconfig
+@@ -519,6 +519,7 @@ CONFIG_CRYPTO_CRC32_ARM64=y
+ CONFIG_STAGING=y
+ CONFIG_DRM=y
+ CONFIG_DRM_TEGRA=y
++CONFIG_DRM_TEGRA_STAGING=y
+ CONFIG_BACKLIGHT_LCD_SUPPORT=y
+ CONFIG_BACKLIGHT_CLASS_DEVICE=y
+ CONFIG_BACKLIGHT_LP855X=y
+-- 
+1.9.1
+

@@ -1,0 +1,10 @@
+diff --git a/arch/arm/configs/tegra_defconfig b/arch/arm/configs/tegra_defconfig
+index 07b2c55..56dc9fa 100755
+--- a/arch/arm/configs/tegra_defconfig
++++ b/arch/arm/configs/tegra_defconfig
+@@ -305,3 +305,5 @@ CONFIG_EARLY_PRINTK=y
+ CONFIG_CRYPTO_TWOFISH=y
+ CONFIG_CRC_CCITT=y
+ CONFIG_SECCOMP=y
++CONFIG_EXTRA_FIRMWARE_DIR="."
++CONFIG_EXTRA_FIRMWARE="nvidia/tegra124/xusb.bin"

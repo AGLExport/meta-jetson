@@ -1,0 +1,34 @@
+From c652e976e6cd27818babd0b4832a94f9508e9c0e Mon Sep 17 00:00:00 2001
+From: wata2ki <wata2ki@gmail.com>
+Date: Wed, 1 Mar 2017 00:08:04 +0900
+Subject: [PATCH 1/4] arm64 enable Tegra DRM
+
+From 4dc7d97b97150ff3d38090d52fef1598f6c00fcc Mon Sep 17 00:00:00 2001
+From: Alexandre Courbot <acourbot@nvidia.com>
+Date: Thu, 9 Jun 2016 15:59:29 +0900
+Subject: [PATCH 01/13] arm64: enable Tegra DRM
+---
+ arch/arm64/configs/defconfig | 7 +++++++
+ 1 file changed, 7 insertions(+)
+ mode change 100644 => 100755 arch/arm64/configs/defconfig
+
+diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
+old mode 100644
+new mode 100755
+index dab2cb0..01d9e30
+--- a/arch/arm64/configs/defconfig
++++ b/arch/arm64/configs/defconfig
+@@ -463,3 +463,10 @@ CONFIG_CRYPTO_AES_ARM64_CE_CCM=y
+ CONFIG_CRYPTO_AES_ARM64_CE_BLK=y
+ # CONFIG_CRYPTO_AES_ARM64_NEON_BLK is not set
+ CONFIG_CRYPTO_CRC32_ARM64=y
++CONFIG_STAGING=y
++CONFIG_DRM=y
++CONFIG_DRM_TEGRA=y
++CONFIG_BACKLIGHT_LCD_SUPPORT=y
++CONFIG_BACKLIGHT_CLASS_DEVICE=y
++CONFIG_BACKLIGHT_LP855X=y
++CONFIG_DRM_PANEL_SIMPLE=y
+-- 
+1.9.1
+

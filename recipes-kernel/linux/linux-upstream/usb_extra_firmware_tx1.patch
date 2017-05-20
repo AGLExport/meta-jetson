@@ -1,0 +1,10 @@
+diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
+index eb80a8e..57accc7 100755
+--- a/arch/arm64/configs/defconfig
++++ b/arch/arm64/configs/defconfig
+@@ -476,3 +476,5 @@ CONFIG_PWM_TEGRA=y
+ CONFIG_MEMORY=y
+ CONFIG_TEGRA_MC=y
+ CONFIG_TEGRA_IOMMU_SMMU=y
++CONFIG_EXTRA_FIRMWARE_DIR="."
++CONFIG_EXTRA_FIRMWARE="nvidia/tegra210/xusb.bin"

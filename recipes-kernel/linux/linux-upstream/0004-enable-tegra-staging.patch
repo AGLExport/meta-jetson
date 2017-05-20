@@ -1,0 +1,28 @@
+From 6d43ac1345ce9535a6fb94e7e6d7a2d91c8cf79d Mon Sep 17 00:00:00 2001
+From: wata2ki <wata2ki@gmail.com>
+Date: Wed, 1 Mar 2017 00:13:52 +0900
+Subject: [PATCH 4/4] enable tegra staging
+
+From 631dbc7c33530281cbb0a2b3af1d4e154a403196 Mon Sep 17 00:00:00 2001
+From: Alexandre Courbot <acourbot@nvidia.com>
+Date: Thu, 8 Dec 2016 14:42:08 +0900
+Subject: [PATCH 12/13] enable tegra staging
+---
+ arch/arm64/configs/defconfig | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
+index f718176..eb80a8e 100755
+--- a/arch/arm64/configs/defconfig
++++ b/arch/arm64/configs/defconfig
+@@ -466,6 +466,7 @@ CONFIG_CRYPTO_CRC32_ARM64=y
+ CONFIG_STAGING=y
+ CONFIG_DRM=y
+ CONFIG_DRM_TEGRA=y
++CONFIG_DRM_TEGRA_STAGING=y
+ CONFIG_BACKLIGHT_LCD_SUPPORT=y
+ CONFIG_BACKLIGHT_CLASS_DEVICE=y
+ CONFIG_BACKLIGHT_LP855X=y
+-- 
+1.9.1
+

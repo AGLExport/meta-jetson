@@ -1,0 +1,14 @@
+diff --git a/arch/arm/configs/tegra_defconfig b/arch/arm/configs/tegra_defconfig
+old mode 100644
+new mode 100755
+index 6012a1e..2a501b5
+--- a/arch/arm/configs/tegra_defconfig
++++ b/arch/arm/configs/tegra_defconfig
+@@ -188,6 +188,7 @@ CONFIG_USB_GSPCA=y
+ CONFIG_DRM=y
+ CONFIG_DRM_NOUVEAU=m
+ CONFIG_DRM_TEGRA=y
++CONFIG_DRM_TEGRA_STAGING=y
+ CONFIG_DRM_PANEL_SIMPLE=y
+ # CONFIG_LCD_CLASS_DEVICE is not set
+ # CONFIG_BACKLIGHT_GENERIC is not set

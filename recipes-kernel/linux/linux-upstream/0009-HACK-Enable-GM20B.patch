@@ -1,0 +1,25 @@
+From 3b02bdd632734a906bf5d4694ca5d4a74ac773d8 Mon Sep 17 00:00:00 2001
+From: Alexandre Courbot <acourbot@nvidia.com>
+Date: Wed, 22 Jun 2016 16:48:50 +0900
+Subject: [PATCH 09/13] [HACK] Enable GM20B
+
+---
+ arch/arm64/boot/dts/nvidia/tegra210-p2371-2180.dts | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/nvidia/tegra210-p2371-2180.dts b/arch/arm64/boot/dts/nvidia/tegra210-p2371-2180.dts
+index a1696dc..58f91a2 100644
+--- a/arch/arm64/boot/dts/nvidia/tegra210-p2371-2180.dts
++++ b/arch/arm64/boot/dts/nvidia/tegra210-p2371-2180.dts
+@@ -53,6 +53,8 @@
+ 
+ 	gpu@57000000 {
+ 		vdd-supply = <&vdd_gpu>;
++		/* TODO should be done by U-boot */
++		status = "okay";
+ 	};
+ 
+ 	i2c@7000c400 {
+-- 
+1.9.1
+

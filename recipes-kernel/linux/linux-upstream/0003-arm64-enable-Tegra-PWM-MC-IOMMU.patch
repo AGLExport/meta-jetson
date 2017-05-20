@@ -1,0 +1,28 @@
+From 221028bf2d0d0ec6162d6052ef4c93ae523d277e Mon Sep 17 00:00:00 2001
+From: wata2ki <wata2ki@gmail.com>
+Date: Wed, 1 Mar 2017 00:10:48 +0900
+Subject: [PATCH 3/4] arm64: enable Tegra PWM, MC, IOMMU
+
+From 4d06cf22e63ebda8e914fec5134f74184f8c5ff1 Mon Sep 17 00:00:00 2001
+From: Alexandre Courbot <acourbot@nvidia.com>
+Date: Thu, 9 Jun 2016 16:05:51 +0900
+Subject: [PATCH 04/13] arm64: enable Tegra PWM, MC, IOMMU
+---
+ arch/arm64/configs/defconfig | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
+index dc12f3a..f718176 100755
+--- a/arch/arm64/configs/defconfig
++++ b/arch/arm64/configs/defconfig
+@@ -471,3 +471,7 @@ CONFIG_BACKLIGHT_CLASS_DEVICE=y
+ CONFIG_BACKLIGHT_LP855X=y
+ CONFIG_DRM_PANEL_SIMPLE=y
+ CONFIG_USB_RTL8152=y
++CONFIG_PWM_TEGRA=y
++CONFIG_MEMORY=y
++CONFIG_TEGRA_MC=y
++CONFIG_TEGRA_IOMMU_SMMU=y
+-- 
+1.9.1
+

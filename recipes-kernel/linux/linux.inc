@@ -16,7 +16,7 @@ UDEV_GE_141 ?= "1"
 KERNEL_ENABLE_CGROUPS ?= "1"
 
 # combine oe-core way with angstrom DISTRO_TYPE
-DISTRO_TYPE ?= "${@base_contains("IMAGE_FEATURES", "debug-tweaks", "debug", "release",d)}"
+DISTRO_TYPE ?= "${@bb.utils.contains("IMAGE_FEATURES", "debug-tweaks", "debug", "release",d)}"
 
 # Set the verbosity of kernel messages during runtime
 # You can define CMDLINE_DEBUG in your local.conf or distro.conf to override this behaviour
@@ -185,7 +185,7 @@ do_configure_prepend() {
 		kernel_configure_variable BLK_DEV_LOOP y
 	fi
 
-	if [ "x1" = "x${@base_contains("DISTRO_FEATURES", "usbgadget", "1", "",d)}" ]; then
+	if [ "x1" = "x${@bb.utils.contains("DISTRO_FEATURES", "usbgadget", "1", "",d)}" ]; then
 		# activate USB-OTG & Gadget
 		kernel_configure_variable USB_OTG y
 		kernel_configure_variable USB_RENESAS_USBHS_UDC y
