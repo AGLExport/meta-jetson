@@ -1,0 +1,10 @@
+TIMEOUT 30
+DEFAULT primary
+
+MENU TITLE Jetson-TK1 SD Card boot options
+
+LABEL primary
+      MENU LABEL primary kernel
+      LINUX /boot/zImage
+      FDT /boot/tegra124-jetson-tk1.dtb
+      APPEND console=ttyS0,115200n8 nouveau.pstate=1 cma=128M root=/dev/mmcblk1p1 rw rootwait 
