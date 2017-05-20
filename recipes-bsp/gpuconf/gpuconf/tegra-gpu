@@ -1,0 +1,8 @@
+#!/bin/sh
+
+while [ ! -e /sys/kernel/debug/dri/128/pstate ]
+do
+	usleep 10000
+done
+
+echo 0d > /sys/kernel/debug/dri/128/pstate

@@ -1,0 +1,1 @@
+ACTION=="add", KERNEL=="renderD128", RUN+="/usr/bin/tegra-gpu"
