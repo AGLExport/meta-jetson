@@ -11,12 +11,10 @@ PROVIDES = "drm"
 DEPENDS = "libpthread-stubs udev libpciaccess"
 
 SRC_URI = "http://dri.freedesktop.org/libdrm/${BP}.tar.bz2 \
-           file://installtests.patch \
-           file://fix_O_CLOEXEC_undeclared.patch \
           "
 
-SRC_URI[md5sum] = "bcc96848d969cecf28223f668eeff354"
-SRC_URI[sha256sum] = "5b4bd9a5922929bc716411cb74061fbf31b06ba36feb89bc1358a91a8d0ca9df"
+SRC_URI[md5sum] = "57b0589122ec4b8d5dfb9e430a21f0b3"
+SRC_URI[sha256sum] = "2d5a500eef412cc287d12268eed79d571e262d4957a2ec9258073f305985054f"
 
 inherit autotools pkgconfig
 
