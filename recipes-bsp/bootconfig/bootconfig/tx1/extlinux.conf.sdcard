@@ -1,0 +1,10 @@
+TIMEOUT 30
+DEFAULT primary
+
+MENU TITLE p2371-2180 SD Card boot options
+
+LABEL primary
+      MENU LABEL primary kernel
+      LINUX /boot/Image
+      FDT /boot/tegra210-p2371-2180.dtb
+      APPEND console=ttyS0,115200n8 root=/dev/mmcblk1p1 rw rootwait

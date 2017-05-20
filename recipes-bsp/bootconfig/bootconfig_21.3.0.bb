@@ -9,7 +9,9 @@ LIC_FILES_CHKSUM = "file://jetson-tk1_extlinux.conf.sdcard;md5=c2c66ddbca997f158
 
 S="${WORKDIR}"
 
-PR = "r1" 
+PR = "r1"
+
+COMPATIBLE_MACHINE = "jetson-tk1-upstream"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
