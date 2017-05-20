@@ -7,6 +7,6 @@ DIR3_FEATURES += " ${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'libxshmfence'
 
 PACKAGECONFIG[dri3] = "--enable-dri3, --disable-dri3, ${DIR3_FEATURES} "
 
-GALLIUMDRIVERS = "nouveau"
+GALLIUMDRIVERS = "nouveau,tegra"
 DRIDRIVERS_append = ",nouveau"
 

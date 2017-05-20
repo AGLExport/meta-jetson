@@ -1,0 +1,25 @@
+From 7dde482d7ef5cf54ec18491bd9cdf741f7285fa1 Mon Sep 17 00:00:00 2001
+From: Alexandre Courbot <acourbot@nvidia.com>
+Date: Fri, 9 Dec 2016 18:02:18 +0900
+Subject: [PATCH 3/6] [HACK] disable check for pthread-stubs
+
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 4b90b65..2e26b8f 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -840,7 +840,7 @@ fi
+ 
+ dnl pthread-stubs is mandatory on targets where it exists
+ case "$host_os" in
+-cygwin* )
++cygwin* | linux* )
+     pthread_stubs_possible="no"
+     ;;
+ * )
+-- 
+1.9.1
+

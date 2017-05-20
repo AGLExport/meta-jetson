@@ -1,0 +1,24 @@
+From cb8bfedfc4116609176a94defce97bdf6500e286 Mon Sep 17 00:00:00 2001
+From: Alexandre Courbot <acourbot@nvidia.com>
+Date: Mon, 11 Jul 2016 14:44:59 +0900
+Subject: [PATCH 5/6] [HACK] make DRI work under X
+
+---
+ src/loader/loader_dri3_helper.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/loader/loader_dri3_helper.c b/src/loader/loader_dri3_helper.c
+index ca02e97..568a1c7 100644
+--- a/src/loader/loader_dri3_helper.c
++++ b/src/loader/loader_dri3_helper.c
+@@ -145,6 +145,7 @@ loader_dri3_drawable_init(xcb_connection_t *conn,
+    draw->drawable = drawable;
+    draw->dri_screen = dri_screen;
+    draw->is_different_gpu = is_different_gpu;
++   draw->is_different_gpu = 1;
+ 
+    draw->have_back = 0;
+    draw->have_fake_front = 0;
+-- 
+1.9.1
+
