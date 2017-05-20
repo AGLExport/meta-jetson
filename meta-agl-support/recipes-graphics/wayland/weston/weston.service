@@ -1,0 +1,12 @@
+[Unit]
+Description=Weston reference Wayland compositor
+Conflicts=getty@tty1.service
+After=dbus.service
+
+[Service]
+ExecStart=/usr/bin/weston-launch --tty /dev/tty1 --user root -- --idle-time=4294967
+ExecStop=/usr/bin/killall -s KILL weston
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
