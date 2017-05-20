@@ -1,0 +1,2 @@
+DEPENDS += " libmad "
+PACKAGECONFIG += " mad "
