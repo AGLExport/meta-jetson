@@ -1,7 +1,7 @@
-From 8a0526d8bf7f462ea773be99d1ed8e2b3a2edae1 Mon Sep 17 00:00:00 2001
+From a4d16a480283defa5daf1393924882f0280b7e9f Mon Sep 17 00:00:00 2001
 From: Christian Gmeiner <christian.gmeiner@gmail.com>
 Date: Sun, 21 Aug 2016 22:10:12 +0200
-Subject: [PATCH 1/6] gallium: add Tegra renderonly support
+Subject: [PATCH] gallium: add Tegra renderonly support
 
 Based on the same model as the IMX driver, opens a Nouveau render device
 in order to transparently provide acceleration on Tegra.
@@ -15,7 +15,7 @@ Signed-off-by: Alexandre Courbot <acourbot@nvidia.com>
  .../auxiliary/pipe-loader/pipe_loader_drm.c        |  5 ++
  src/gallium/auxiliary/target-helpers/drm_helper.h  | 22 +++++++
  .../auxiliary/target-helpers/drm_helper_public.h   |  3 +
- src/gallium/drivers/nouveau/nouveau_buffer.c       |  3 +
+ src/gallium/drivers/nouveau/nouveau_buffer.c       |  4 ++
  src/gallium/drivers/nouveau/nouveau_buffer.h       |  2 +
  src/gallium/drivers/nouveau/nouveau_screen.h       |  3 +
  src/gallium/drivers/nouveau/nv50/nv50_miptree.c    |  3 +
@@ -32,7 +32,7 @@ Signed-off-by: Alexandre Courbot <acourbot@nvidia.com>
  src/gallium/winsys/tegra/drm/tegra_drm_public.h    |  8 +++
  src/gallium/winsys/tegra/drm/tegra_drm_winsys.c    | 74 ++++++++++++++++++++++
  src/mesa/drivers/dri/nouveau/nouveau_screen.h      |  1 +
- 22 files changed, 265 insertions(+), 3 deletions(-)
+ 22 files changed, 266 insertions(+), 3 deletions(-)
  create mode 100644 src/gallium/drivers/tegra/Automake.inc
  create mode 100644 src/gallium/drivers/tegra/Makefile.am
  create mode 100644 src/gallium/winsys/tegra/drm/Android.mk
@@ -42,10 +42,10 @@ Signed-off-by: Alexandre Courbot <acourbot@nvidia.com>
  create mode 100644 src/gallium/winsys/tegra/drm/tegra_drm_winsys.c
 
 diff --git a/configure.ac b/configure.ac
-index bc92fb5..4b90b65 100644
+index 0a797c6..c294e0a 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -1234,7 +1234,7 @@ GALLIUM_DRIVERS_DEFAULT="r300,r600,svga,swrast"
+@@ -1228,7 +1228,7 @@ GALLIUM_DRIVERS_DEFAULT="r300,r600,svga,swrast"
  AC_ARG_WITH([gallium-drivers],
      [AS_HELP_STRING([--with-gallium-drivers@<:@=DIRS...@:>@],
          [comma delimited Gallium drivers list, e.g.
@@ -54,9 +54,9 @@ index bc92fb5..4b90b65 100644
          @<:@default=r300,r600,svga,swrast@:>@])],
      [with_gallium_drivers="$withval"],
      [with_gallium_drivers="$GALLIUM_DRIVERS_DEFAULT"])
-@@ -2559,6 +2559,10 @@ if test -n "$with_gallium_drivers"; then
-             require_libdrm "virgl"
-             require_basic_egl "virgl"
+@@ -2398,6 +2398,10 @@ if test -n "$with_gallium_drivers"; then
+                 require_basic_egl "virgl"
+             fi
              ;;
 +        xtegra)
 +            HAVE_GALLIUM_TEGRA=yes
@@ -65,7 +65,7 @@ index bc92fb5..4b90b65 100644
          *)
              AC_MSG_ERROR([Unknown Gallium driver: $driver])
              ;;
-@@ -2643,6 +2647,7 @@ AM_CONDITIONAL(HAVE_GALLIUM_NOUVEAU, test "x$HAVE_GALLIUM_NOUVEAU" = xyes)
+@@ -2490,6 +2494,7 @@ AM_CONDITIONAL(HAVE_GALLIUM_NOUVEAU, test "x$HAVE_GALLIUM_NOUVEAU" = xyes)
  AM_CONDITIONAL(HAVE_GALLIUM_FREEDRENO, test "x$HAVE_GALLIUM_FREEDRENO" = xyes)
  AM_CONDITIONAL(HAVE_GALLIUM_ETNAVIV, test "x$HAVE_GALLIUM_ETNAVIV" = xyes)
  AM_CONDITIONAL(HAVE_GALLIUM_IMX, test "x$HAVE_GALLIUM_IMX" = xyes)
@@ -73,7 +73,7 @@ index bc92fb5..4b90b65 100644
  AM_CONDITIONAL(HAVE_GALLIUM_SOFTPIPE, test "x$HAVE_GALLIUM_SOFTPIPE" = xyes)
  AM_CONDITIONAL(HAVE_GALLIUM_LLVMPIPE, test "x$HAVE_GALLIUM_LLVMPIPE" = xyes)
  AM_CONDITIONAL(HAVE_GALLIUM_SWR, test "x$HAVE_GALLIUM_SWR" = xyes)
-@@ -2800,6 +2805,7 @@ AC_CONFIG_FILES([Makefile
+@@ -2646,6 +2651,7 @@ AC_CONFIG_FILES([Makefile
  		src/gallium/drivers/imx/Makefile
  		src/gallium/drivers/vc4/Makefile
  		src/gallium/drivers/virgl/Makefile
@@ -81,7 +81,7 @@ index bc92fb5..4b90b65 100644
  		src/gallium/state_trackers/clover/Makefile
  		src/gallium/state_trackers/dri/Makefile
  		src/gallium/state_trackers/glx/xlib/Makefile
-@@ -2844,6 +2850,7 @@ AC_CONFIG_FILES([Makefile
+@@ -2690,6 +2696,7 @@ AC_CONFIG_FILES([Makefile
  		src/gallium/winsys/vc4/drm/Makefile
  		src/gallium/winsys/virgl/drm/Makefile
  		src/gallium/winsys/virgl/vtest/Makefile
@@ -105,7 +105,7 @@ index f910f31..0f887d2 100644
  SUBDIRS += winsys/sw/null
  
 diff --git a/src/gallium/auxiliary/pipe-loader/pipe_loader_drm.c b/src/gallium/auxiliary/pipe-loader/pipe_loader_drm.c
-index 6c89fe5..ff1166c 100644
+index 01444ef..bb76fd7 100644
 --- a/src/gallium/auxiliary/pipe-loader/pipe_loader_drm.c
 +++ b/src/gallium/auxiliary/pipe-loader/pipe_loader_drm.c
 @@ -163,6 +163,11 @@ static const struct drm_driver_descriptor driver_descriptors[] = {
@@ -165,15 +165,23 @@ index bc12b21..5525bdf 100644
 +
  #endif /* _DRM_HELPER_PUBLIC_H */
 diff --git a/src/gallium/drivers/nouveau/nouveau_buffer.c b/src/gallium/drivers/nouveau/nouveau_buffer.c
-index 17052b2..95dcaad 100644
+index 2c60441..9624f3c 100644
 --- a/src/gallium/drivers/nouveau/nouveau_buffer.c
 +++ b/src/gallium/drivers/nouveau/nouveau_buffer.c
-@@ -128,6 +128,9 @@ nouveau_buffer_destroy(struct pipe_screen *pscreen,
+@@ -117,6 +117,7 @@ nouveau_buffer_destroy(struct pipe_screen *pscreen,
+                        struct pipe_resource *presource)
+ {
+    struct nv04_resource *res = nv04_resource(presource);
++   struct nouveau_screen *screen = nouveau_screen(pscreen);
+ 
+    nouveau_buffer_release_gpu_storage(res);
+ 
+@@ -128,6 +129,9 @@ nouveau_buffer_destroy(struct pipe_screen *pscreen,
  
     util_range_destroy(&res->valid_buffer_range);
  
 +   if (res->scanout)
-+       renderonly_scanout_destroy(res->scanout);
++       renderonly_scanout_destroy(res->scanout,&(screen->ro));
 +
     FREE(res);
  
@@ -290,7 +298,7 @@ index 0000000..30f4689
 +
 +libtegra_la_SOURCES =
 diff --git a/src/gallium/targets/dri/Makefile.am b/src/gallium/targets/dri/Makefile.am
-index bca747f..4236da1 100644
+index 9c63bdf..786a3e0 100644
 --- a/src/gallium/targets/dri/Makefile.am
 +++ b/src/gallium/targets/dri/Makefile.am
 @@ -94,6 +94,8 @@ include $(top_srcdir)/src/gallium/drivers/virgl/Automake.inc
@@ -355,7 +363,7 @@ index cc9dfa7..dd9c8f0 100644
 +}
 diff --git a/src/gallium/winsys/tegra/drm/Android.mk b/src/gallium/winsys/tegra/drm/Android.mk
 new file mode 100644
-index 0000000..a48dca48
+index 0000000..a48dca4
 --- /dev/null
 +++ b/src/gallium/winsys/tegra/drm/Android.mk
 @@ -0,0 +1,33 @@

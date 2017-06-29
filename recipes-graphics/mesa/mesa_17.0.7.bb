@@ -2,10 +2,10 @@ require ${BPN}.inc
 
 LIC_FILES_CHKSUM = "file://docs/license.html;md5=899fbe7e42d494c7c8c159c7001693d5"
 
-SRC_URI = "ftp://ftp.freedesktop.org/pub/mesa/${PV}/mesa-${PV}.tar.xz"
+SRC_URI = "https://mesa.freedesktop.org/archive/mesa-${PV}.tar.xz"
 
-SRC_URI[md5sum] = "6a7e768241846c8c69bbadbf904dcc58"
-SRC_URI[sha256sum] = "96fd70ef5f31d276a17e424e7e1bb79447ccbbe822b56844213ef932e7ad1b0c"
+SRC_URI[md5sum] = "8d088c8f7a099084ac745646ed1ad62b"
+SRC_URI[sha256sum] = "f6d75304a229c8d10443e219d6b6c0c342567dbab5a879ebe7cfa3c9139c4492"
 
 #because we cannot rely on the fact that all apps will use pkgconfig,
 #make eglplatform.h independent of MESA_EGL_NO_X11_HEADER
