@@ -11,7 +11,7 @@ Available functions.
 
 Supported distros.  
   poky (core-image-weston).  
-  AGL Distro 4.0.  
+  AGL Distro 5.0.  
 
 ===============
 
