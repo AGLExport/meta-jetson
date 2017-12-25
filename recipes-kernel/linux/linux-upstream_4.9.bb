@@ -13,10 +13,10 @@ COMPATIBLE_MACHINE = "jetson-tk1-upstream|jetson-tx1-upstream"
 
 DEFAULT_PREFERENCE = "-1"
 
-S = "${WORKDIR}/linux-4.9.35"
+S = "${WORKDIR}/linux-4.9.72"
 
-PR = "r35"
-SRC_URI = "https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.9.35.tar.xz;name=linux \
+PR = "r72"
+SRC_URI = "https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.9.72.tar.xz;name=linux \
            git://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git;name=firmware;rev=8d1fd61a3723ab8cb6b7bfeb8be38e16282cc1ed \
 "
 
@@ -42,8 +42,8 @@ SRC_URI_append_jetson-tx1-upstream = " \
         file://usb_extra_firmware_tx1.patch \
         "
 
-SRC_URI[linux.md5sum] = "9b72bca09f8192ff645b354a4f7960ea"
-SRC_URI[linux.sha256sum] = "3491234ed79f3e4a425457edf96447773be677521932a3e5bafb79834c5e7436"
+SRC_URI[linux.md5sum] = "cca6a474e1cd3ac40f6e3bce878a3c92"
+SRC_URI[linux.sha256sum] = "69f201f1eb9eade9a3cde26d3896a53df9fddf1e19f9fa7b36331b8b1976b83b"
 
 KERNEL_DEFCONFIG_jetson-tk1-upstream = "tegra_defconfig"
 KERNEL_DEFCONFIG_jetson-tx1-upstream = "defconfig"
