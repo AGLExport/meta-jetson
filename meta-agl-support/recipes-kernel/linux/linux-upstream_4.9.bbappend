@@ -1,17 +1,11 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/linux:"
 
-SRC_URI += " file://drm.cfg \
-             file://usb.cfg \
+require recipes-kernel/linux/linux-agl.inc
+require recipes-kernel/linux/linux-agl-4.9.inc
+
+SRC_URI += " file://usb-tegra.cfg \
              file://usbtouch.cfg \
-             file://usbaudio.cfg \
-             file://most.cfg \
            "
-
-SRC_URI_append_smack = "\
-	file://0004-Smack-Assign-smack_known_web-label-for-kernel-thread.patch \
-"
-
 KERNEL_CONFIG_FRAGMENTS_append = " \
-             ${WORKDIR}/drm.cfg ${WORKDIR}/usbtouch.cfg \
-             ${WORKDIR}/usbaudio.cfg ${WORKDIR}/most.cfg \
+             ${WORKDIR}/usb-tegra.cfg ${WORKDIR}/usbtouch.cfg \
 "
