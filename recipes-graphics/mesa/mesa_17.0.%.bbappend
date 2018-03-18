@@ -1,5 +1,7 @@
 SUMMARY = "mesa nouveau append recipe"
 
+FILESEXTRAPATHS_prepend := "${THISDIR}/mesa:"
+
 PACKAGECONFIG_append = " gallium "
 
 DIR3_FEATURES = "dri3proto presentproto "
