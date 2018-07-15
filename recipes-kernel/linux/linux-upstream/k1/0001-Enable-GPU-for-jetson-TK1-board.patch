@@ -1,0 +1,28 @@
+From 8f40d77db571edc40d8087c1b01af080252f0ff2 Mon Sep 17 00:00:00 2001
+From: Naoto Yamaguchi <i33399_YAMAGUCHI@aisin-aw.co.jp>
+Date: Thu, 12 Jul 2018 01:07:03 +0900
+Subject: [PATCH] Enable GPU for jetson TK1 board
+
+---
+ arch/arm/boot/dts/tegra124-jetson-tk1.dts | 2 ++
+ 1 file changed, 2 insertions(+)
+ mode change 100644 => 100755 arch/arm/boot/dts/tegra124-jetson-tk1.dts
+
+diff --git a/arch/arm/boot/dts/tegra124-jetson-tk1.dts b/arch/arm/boot/dts/tegra124-jetson-tk1.dts
+old mode 100644
+new mode 100755
+index e8e777b..f125e20
+--- a/arch/arm/boot/dts/tegra124-jetson-tk1.dts
++++ b/arch/arm/boot/dts/tegra124-jetson-tk1.dts
+@@ -74,6 +74,8 @@
+ 		 * it after having set the VPR up
+ 		 */
+ 		vdd-supply = <&vdd_gpu>;
++
++		status = "okay";
+ 	};
+ 
+ 	pinmux: pinmux@70000868 {
+-- 
+2.7.4
+
