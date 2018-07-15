@@ -1,0 +1,28 @@
+From 9af9356b0a091c32c3dbc296f8840638377a7dfb Mon Sep 17 00:00:00 2001
+From: Naoto Yamaguchi <i33399_YAMAGUCHI@aisin-aw.co.jp>
+Date: Sun, 15 Jul 2018 13:40:26 +0900
+Subject: [PATCH] Fix WAYLAND_PROTOCOLS_DATADIR refers to local path
+
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ mode change 100644 => 100755 configure.ac
+
+diff --git a/configure.ac b/configure.ac
+old mode 100644
+new mode 100755
+index 3a8f04b..810e230
+--- a/configure.ac
++++ b/configure.ac
+@@ -1808,7 +1808,7 @@ for plat in $platforms; do
+         PKG_CHECK_MODULES([WAYLAND_CLIENT], [wayland-client >= $WAYLAND_REQUIRED])
+         PKG_CHECK_MODULES([WAYLAND_SERVER], [wayland-server >= $WAYLAND_REQUIRED])
+         PKG_CHECK_MODULES([WAYLAND_PROTOCOLS], [wayland-protocols >= $WAYLAND_PROTOCOLS_REQUIRED])
+-        WAYLAND_PROTOCOLS_DATADIR=`$PKG_CONFIG --variable=pkgdatadir wayland-protocols`
++        WAYLAND_PROTOCOLS_DATADIR=${PKG_CONFIG_SYSROOT_DIR}`$PKG_CONFIG --variable=pkgdatadir wayland-protocols`
+ 
+         AC_PATH_PROG([WAYLAND_SCANNER], [wayland-scanner], [:])
+ 
+-- 
+2.7.4
+
